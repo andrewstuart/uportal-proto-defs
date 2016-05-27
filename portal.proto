@@ -1,0 +1,31 @@
+
+message RenderRequest {
+  SecurityContext security_context = 1;
+  string original_request = 2;
+}
+
+message SecurityContext {
+  AuthN authn_context = 1;
+  Entity principal = 2;
+}
+
+//Indicates the type of authentications that were performed
+message AuthN {
+  bool secret = 1;
+  bool token = 2;
+  bool biometric = 3;
+  sfixed32 epoch = 4;
+  /* repeated AuthN Vouches = 5; */
+}
+
+message Entity {
+  string name = 1;
+  string id = 2;
+  map<string, string> attributes = 3;
+  repeated string roles = 4;
+}
+
+message RenderResponse {
+  string resource = 1;
+  fixed32 cacheable_sec = 2;
+}
