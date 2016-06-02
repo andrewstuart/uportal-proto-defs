@@ -1,3 +1,6 @@
+service Portlet {
+  rpc GetResource(RenderRequest) returns (RenderResponse);
+}
 
 message RenderRequest {
   SecurityContext security_context = 1;
